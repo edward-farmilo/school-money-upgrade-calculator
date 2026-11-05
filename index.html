@@ -24,7 +24,7 @@
         <h1>See what your SchoolMoney upgrade could cost</h1>
         <p>Get an instant indicative price covering only the months remaining in your current contract year — plus a limited-time saving when you sign before Christmas.</p>
       </header>
-      <div class="trust-strip"><div class="trust-item"><span class="check">✓</span><span>30% Christmas saving</span></div><div class="trust-item"><span class="check">✓</span><span>Remainder of current contract year</span></div><div class="trust-item"><span class="check">✓</span><span>Figures exclude VAT</span></div></div>
+      <div class="trust-strip"><div class="trust-item"><span class="check">✓</span><span>Up to 30% Christmas saving</span></div><div class="trust-item"><span class="check">✓</span><span>Remainder of current contract year</span></div><div class="trust-item"><span class="check">✓</span><span>Figures exclude VAT</span></div></div>
       <div class="grid">
         <div class="inputs">
           <p class="section-title">Tell us about your contract</p>
@@ -34,11 +34,11 @@
           <div class="actions"><button class="primary" id="copy">Copy estimate</button><button class="secondary" id="reset">Reset</button></div>
         </div>
         <aside class="results" aria-live="polite">
-          <div class="offer-badge">Christmas offer · 30% off</div>
+          <div class="offer-badge">Christmas offer · up to 30% off</div>
           <div class="result-label">Your discounted upgrade price</div>
           <div class="price" id="total">£0.00</div>
           <div class="price-caption" id="caption">when signed by 24 December 2026</div>
-          <div class="comparison"><div class="comparison-row"><span>Standard upgrade price</span><strong id="listOut">—</strong></div><div class="comparison-row saving"><span>Your Christmas saving (30%)</span><strong id="savingOut">—</strong></div></div>
+          <div class="comparison"><div class="comparison-row"><span>Standard upgrade price</span><strong id="listOut">—</strong></div><div class="comparison-row saving"><span>Your Christmas saving (up to 30%)</span><strong id="savingOut">—</strong></div></div>
           <div class="summary"><div class="summary-row"><span>Package</span><strong id="productOut">—</strong></div><div class="summary-row"><span>School size</span><strong id="pupilsOut">—</strong></div><div class="summary-row"><span>Contract term</span><strong id="monthsOut">—</strong></div></div>
           <div class="reassurance"><span class="check">✓</span><span>Your final quotation may vary if your contract details or pupil numbers change.</span></div>
         </aside>
@@ -54,7 +54,7 @@
     function update(){const q=quote();$('#productOut').textContent=q.product.label;$('#pupilsOut').textContent=`${q.pupils.toLocaleString('en-GB')} pupils`;$('#monthsOut').textContent=`${q.months} month${q.months===1?'':'s'} remaining`;if(!q.tier){$('#total').textContent='Let’s talk';$('#caption').textContent='Contact us for pricing for schools with 1,000+ pupils';$('#listOut').textContent='—';$('#savingOut').textContent='—';return}$('#total').textContent=money(q.offer);$('#listOut').textContent=money(q.list);$('#savingOut').textContent=`−${money(q.saving)}`;$('#caption').textContent=`when signed by 24 December 2026 · excludes VAT`}
     document.querySelectorAll('input').forEach(el=>el.addEventListener('input',update));$('#plan').addEventListener('change',update);
     $('#reset').onclick=()=>{$('#months').value=8;$('#plan').value='unlimited';$('#pupils').value=420;update()};
-    $('#copy').onclick=async()=>{const q=quote(),text=q.tier?`SchoolMoney ${q.product.label} Christmas upgrade offer: ${money(q.offer)} excluding VAT for the ${q.months} months remaining in the current contract year. Standard price ${money(q.list)}; 30% Christmas saving ${money(q.saving)}. Offer available when agreed by 24 December 2026.`:`Please contact us for a SchoolMoney ${q.product.label} upgrade estimate for ${q.pupils} pupils.`;try{await navigator.clipboard.writeText(text);$('#toast').classList.add('show');setTimeout(()=>$('#toast').classList.remove('show'),1600)}catch(e){alert(text)}};
+    $('#copy').onclick=async()=>{const q=quote(),text=q.tier?`SchoolMoney ${q.product.label} Christmas upgrade offer: ${money(q.offer)} excluding VAT for the ${q.months} months remaining in the current contract year. Standard price ${money(q.list)}; up to 30% Christmas saving ${money(q.saving)}. Offer available when agreed by 24 December 2026.`:`Please contact us for a SchoolMoney ${q.product.label} upgrade estimate for ${q.pupils} pupils.`;try{await navigator.clipboard.writeText(text);$('#toast').classList.add('show');setTimeout(()=>$('#toast').classList.remove('show'),1600)}catch(e){alert(text)}};
     update();
   </script>
 </body>
